@@ -1,0 +1,35 @@
+package LeetCode;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class task349 {
+
+  public static void main(String[] args) {
+
+  }
+
+  class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+      List<Integer>list=new ArrayList<>();
+      Set<Integer>hashSet = new HashSet<>();
+      for (int i : nums1) {
+        hashSet.add(i);
+      }
+      for (int j : nums2) {
+        if (hashSet.contains(j)) {
+          hashSet.remove(j);
+          list.add(j);
+        }
+      }
+
+      int [] result = new int[list.size()];
+      for (int i = 0; i < list.size(); i++) {
+        result[i]=list.get(i);
+      }
+      return result;
+    }
+  }
+  }
