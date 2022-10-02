@@ -1,0 +1,23 @@
+package LeetCode;
+
+public class task8 {
+
+  public static void main(String[] args) {
+    System.out.println(myAtoi("42 abc"));
+  }
+    public static int myAtoi(String s) {
+      if (s == null || s.length() == 0) return 0;
+      int i = 0, l = s.length(), sign = 1;
+      long res = 0;
+      char[] ss = s.toCharArray();
+      while (i < l && ss[i] == ' ') i++;
+      if (i < l && (ss[i] == '+' || ss[i] == '-')) {
+        sign = ss[i++] == '+' ? 1 : -1;
+      }
+      while (i < l && ss[i] >= '0' && ss[i] <= '9') {
+        res = res * 10 + (ss[i++] - '0');
+        if (res > (long) Integer.MAX_VALUE) return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+      }
+      return (int) (sign * res);
+    }
+  }
