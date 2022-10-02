@@ -1,0 +1,12 @@
+package CodeSignal;
+
+public class IntroTask5 {
+    public static void main(String[] args) {
+        System.out.println(solution(3));
+
+    }
+    public static int solution(int n) {
+        return (int) (Math.pow(n,2)+Math.pow(n-1,2));
+    }
+
+}
