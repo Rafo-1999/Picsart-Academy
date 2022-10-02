@@ -1,0 +1,34 @@
+package LeetCode;
+import Homework2.Task5;
+import java.util.Arrays;
+public class task540 {
+    public static void main(String[] args) {
+        int[] nums = {3,3,7,7,10,11,11};
+       Task5.BubbleSort(nums,nums.length);
+        System.out.println(singleNonDuplicate(nums));
+    }
+      public static int  singleNonDuplicate(int[] nums) {
+      
+      int startIndex=0;
+       int endIndex=nums.length-1;
+       int midIndex;
+       if (nums.length==1) {
+           return nums[0];}
+           if (nums[startIndex]!=nums[startIndex+1]){
+               return nums[startIndex];
+           }if (nums[endIndex]!=nums[endIndex-1]){
+               return nums[endIndex];}
+       while (startIndex<=endIndex){
+            midIndex=startIndex+(endIndex-startIndex)/2;
+
+            if (nums[midIndex]!=nums[midIndex-1]&&nums[midIndex]!=nums[midIndex+1]) {
+                return midIndex;}
+          else if (nums[midIndex]==nums[midIndex+1]&&midIndex%2==0 ||nums[midIndex]==nums[midIndex-1] &&midIndex%2!=0){
+                startIndex=midIndex+1;
+           }
+       else {
+                endIndex=midIndex-1;
+            }}
+                return -1;
+          }
+}
