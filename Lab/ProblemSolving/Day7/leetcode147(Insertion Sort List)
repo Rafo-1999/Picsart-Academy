@@ -1,0 +1,57 @@
+package LeetCode;
+
+public class task147 {
+
+  public static void main(String[] args) {
+
+  }
+
+
+  public class ListNode {
+
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+      this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+      this.val = val;
+      this.next = next;
+    }
+  }
+
+  class Solution {
+
+    public ListNode insertionSortList(ListNode head) {
+      if (head == null) {
+        return head;
+      }
+
+      final ListNode node = new ListNode(-1);
+      ListNode prev = node;
+
+      while (head != null) {
+        final ListNode next = head.next;
+
+        if (prev.val >= head.val) {
+          prev = node;
+        }
+
+        while (prev.next != null && prev.next.val < head.val) {
+          prev = prev.next;
+        }
+
+        head.next = prev.next;
+        prev.next = head;
+        head = next;
+      }
+
+      return node.next;
+    }
+  }
+}
