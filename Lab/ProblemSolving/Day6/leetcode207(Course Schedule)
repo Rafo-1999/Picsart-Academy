@@ -1,0 +1,42 @@
+package LeetCode;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class task207 {
+
+  public static void main(String[] args) {
+
+  }
+
+  public boolean canFinish(int numCourses, int[][] prerequisites) {
+    LinkedList<Integer> list=new LinkedList<>();
+    int[] array=new int[numCourses];
+
+    for (int i = 0; i < prerequisites.length; i++) {
+      array[prerequisites[i][0]]++;
+    }
+    for (int i = 0; i < numCourses; i++) {
+      if (array[i]==0){
+        list.offer(i);
+      }
+    }
+
+    int count =0;
+    while (!list.isEmpty()){
+      int course=list.poll();
+      count++;
+      for (int i = 0; i < prerequisites.length; i++) {
+        if (prerequisites[i][1]==course){
+          array[prerequisites[i][0]]--;
+          if (array[prerequisites[i][0]]==0){
+            list.offer(prerequisites[i][0]);
+          }
+        }
+      }
+    }
+      return count==numCourses;
+  }
+
+}
